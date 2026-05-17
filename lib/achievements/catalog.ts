@@ -21,9 +21,9 @@ export const achievementCatalog: Achievement[] = [
   },
   {
     id: "ai-sparring",
-    title: "Sparring",
+    title: "Спарринг с ИИ",
     description: "Сыграйте партию против ИИ.",
-    icon: "AI"
+    icon: "ИИ"
   }
 ];
 

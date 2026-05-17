@@ -7,9 +7,9 @@ export default function ProCancelPage() {
     <div className="mx-auto max-w-xl rounded-lg border bg-card p-6 text-center shadow-soft">
       <XCircle className="mx-auto mb-4 h-12 w-12 text-destructive" />
       <h1 className="text-3xl font-black">Подключение отменено</h1>
-      <p className="mt-2 text-muted-foreground">Pro не был активирован. Можно вернуться и попробовать снова.</p>
+      <p className="mt-2 text-muted-foreground">Про не был активирован. Можно вернуться и попробовать снова.</p>
       <Link href="/pro" className={buttonVariants({ className: "mt-5" })}>
-        Вернуться к Pro
+        Вернуться к Про
       </Link>
     </div>
   );

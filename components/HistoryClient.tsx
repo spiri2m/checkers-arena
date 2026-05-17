@@ -28,7 +28,7 @@ export function HistoryClient() {
         return;
       }
       setRecords(loadGuestRecords());
-      setSource("Guest LocalStorage");
+      setSource("Гостевое локальное хранилище");
       setLoading(false);
     });
     return () => {
@@ -60,7 +60,7 @@ export function HistoryClient() {
           <Card key={record.id}>
             <CardHeader>
               <CardTitle>
-                {record.mode} • {record.winner ? `победили ${record.winner === "white" ? "белые" : "черные"}` : "ничья"}
+                {modeLabel(record.mode)} • {record.winner ? `победили ${record.winner === "white" ? "белые" : "черные"}` : "ничья"}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -71,4 +71,15 @@ export function HistoryClient() {
       </div>
     </div>
   );
+}
+
+function modeLabel(mode: GameRecord["mode"]): string {
+  const labels: Record<GameRecord["mode"], string> = {
+    local: "Локальная игра",
+    ai: "Против ИИ",
+    online: "Онлайн",
+    puzzle: "Задача",
+    sandbox: "Песочница"
+  };
+  return labels[mode] ?? mode;
 }

@@ -48,16 +48,26 @@ export function GameClient({ mode, difficulty, roomId, quickMinutes }: GameClien
     return () => window.clearTimeout(timer);
   }, [game.currentTurn, game.mode, game.status, game.moveHistory.length, makeAIMove]);
 
-  const title = mode === "ai" ? (quickMinutes ? `Быстрая дуэль ${quickMinutes} мин` : "Игра против ИИ") : mode === "online" ? "Онлайн-комната" : "Локальная партия";
+  const title =
+    mode === "ai"
+      ? quickMinutes
+        ? `Быстрая дуэль ${quickMinutes} мин`
+        : "Игра против ИИ"
+      : mode === "online"
+        ? "Онлайн-комната"
+        : "Локальная партия";
 
   return (
     <div className="space-y-5">
       <div className="flex flex-col gap-1">
-        <p className="text-sm font-semibold uppercase text-primary">{roomId ? `Room ${roomId}` : mode}</p>
+        <p className="text-sm font-semibold uppercase text-primary">{roomId ? `Комната ${roomId}` : modeLabel(mode)}</p>
         <h1 className="text-2xl font-black sm:text-3xl">{title}</h1>
         {mode === "online" ? (
           <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
-            <span>WebSocket: {onlineRoom.status === "connected" ? "подключен" : onlineRoom.status === "connecting" ? "подключение" : "не подключен"}</span>
+            <span>
+              Веб-сокет:{" "}
+              {onlineRoom.status === "connected" ? "подключен" : onlineRoom.status === "connecting" ? "подключение" : "не подключен"}
+            </span>
             <span>Роль: {onlineRoom.role === "white" ? "белые" : onlineRoom.role === "black" ? "черные" : "зритель"}</span>
             <span>Игроки: {onlineRoom.playerCount}/2</span>
             {onlineRoom.spectatorCount ? <span>Зрители: {onlineRoom.spectatorCount}</span> : null}
@@ -71,4 +81,15 @@ export function GameClient({ mode, difficulty, roomId, quickMinutes }: GameClien
       <GameResultModal />
     </div>
   );
+}
+
+function modeLabel(mode: GameMode): string {
+  const labels: Record<GameMode, string> = {
+    local: "Локальная игра",
+    ai: "ИИ",
+    online: "Онлайн",
+    puzzle: "Задачи",
+    sandbox: "Песочница"
+  };
+  return labels[mode];
 }

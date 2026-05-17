@@ -10,7 +10,6 @@ const SANDBOX_SETUPS_KEY = "checkers-arena:sandbox-setups";
 
 export interface LocalSettings {
   theme: "light" | "dark";
-  language: "ru" | "en";
   hintsEnabled: boolean;
   aiDifficulty: Difficulty;
   boardTheme: string;
@@ -19,7 +18,6 @@ export interface LocalSettings {
 
 export const defaultSettings: LocalSettings = {
   theme: "dark",
-  language: "ru",
   hintsEnabled: true,
   aiDifficulty: "medium",
   boardTheme: "classic",

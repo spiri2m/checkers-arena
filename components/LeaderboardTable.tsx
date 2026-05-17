@@ -19,8 +19,8 @@ export function LeaderboardTable({ players }: { players: PlayerProfile[] }) {
               <th>Игрок</th>
               <th>Город</th>
               <th>Рейтинг</th>
-              <th>W/L/D</th>
-              <th>Win rate</th>
+              <th>П/Пор/Н</th>
+              <th>Винрейт</th>
             </tr>
           </thead>
           <tbody>
@@ -31,7 +31,7 @@ export function LeaderboardTable({ players }: { players: PlayerProfile[] }) {
                 <tr key={player.id} className="border-t">
                   <td className="py-3 font-bold">{index + 1}</td>
                   <td className="font-semibold">{player.username}</td>
-                  <td>{player.city ?? "Global"}</td>
+                  <td>{player.city ?? "Глобально"}</td>
                   <td>{player.rating}</td>
                   <td>
                     {player.wins}/{player.losses}/{player.draws}

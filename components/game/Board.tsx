@@ -6,9 +6,9 @@ import { Square } from "@/components/game/Square";
 import { useGameStore } from "@/store/game-store";
 
 const boardThemes: BoardTheme[] = [
-  { id: "classic", name: "Classic", light: "bg-[#f3ead7]", dark: "bg-[#7f1d1d]" },
-  { id: "arena", name: "Club", light: "bg-[#e7dec8]", dark: "bg-[#27272a]" },
-  { id: "ice", name: "Ice Pro", light: "bg-[#e0f2fe]", dark: "bg-[#075985]", pro: true }
+  { id: "classic", name: "Классика", light: "bg-[#f3ead7]", dark: "bg-[#7f1d1d]" },
+  { id: "arena", name: "Клуб", light: "bg-[#e7dec8]", dark: "bg-[#27272a]" },
+  { id: "ice", name: "Лед Про", light: "bg-[#e0f2fe]", dark: "bg-[#075985]", pro: true }
 ];
 
 export function Board() {

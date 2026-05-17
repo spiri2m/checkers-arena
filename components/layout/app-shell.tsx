@@ -1,9 +1,16 @@
 import Link from "next/link";
-import { Crown, Swords } from "lucide-react";
+import { Bot, Crown, FlaskConical, Puzzle, Swords, Trophy, User } from "lucide-react";
 import { BottomTabNav } from "@/components/layout/BottomTabNav";
-import { LanguageToggle } from "@/components/layout/language-toggle";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { buttonVariants } from "@/components/ui/button";
+
+const desktopNav = [
+  { href: "/game/ai", label: "ИИ", icon: Bot },
+  { href: "/sandbox", label: "Песочница", icon: FlaskConical },
+  { href: "/puzzles", label: "Задачи", icon: Puzzle },
+  { href: "/leaderboard", label: "Лидерборд", icon: Trophy },
+  { href: "/profile", label: "Профиль", icon: User }
+];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +23,18 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </span>
             <span>Checkers Arena</span>
           </Link>
+          <nav className="hidden items-center gap-1 lg:flex">
+            {desktopNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="inline-flex h-9 items-center gap-2 rounded-md px-3 text-sm font-semibold text-muted-foreground transition hover:bg-muted hover:text-foreground"
+              >
+                <item.icon className="h-4 w-4" />
+                {item.label}
+              </Link>
+            ))}
+          </nav>
           <div className="flex items-center gap-2">
             <Link
               href="/pro"
@@ -25,9 +44,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               })}
             >
               <Crown className="h-4 w-4" />
-              Pro
+              Про
             </Link>
-            <LanguageToggle />
             <ThemeToggle />
           </div>
         </div>

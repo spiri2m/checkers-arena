@@ -39,16 +39,16 @@ export function ReplayViewer({ record }: { record: GameRecord }) {
               Сыграно: {currentMove.notation} · {currentMove.player === "white" ? "белые" : "черные"}
             </div>
             <div className="text-muted-foreground">
-              Лучший ход Coach: {currentReview?.bestMove?.notation ?? "не найден"}.
+              Лучший ход ИИ-тренера: {currentReview?.bestMove?.notation ?? "не найден"}.
               {typeof currentReview?.loss === "number" ? ` Потеря оценки: ${Math.round(currentReview.loss * 10) / 10}.` : ""}
             </div>
             <div className="text-xs text-muted-foreground">
-              Зеленая рамка показывает сыгранный ход, желтая пунктирная рамка показывает рекомендованный Coach ход.
+              Зеленая рамка показывает сыгранный ход, желтая пунктирная рамка показывает рекомендованный ход.
             </div>
           </div>
         ) : (
           <div className="text-muted-foreground">
-            Стартовая позиция {record.initialBoard ? "из песочницы" : "обычной партии"}. Листайте ходы, чтобы увидеть сравнение с Coach.
+            Стартовая позиция {record.initialBoard ? "из песочницы" : "обычной партии"}. Листайте ходы, чтобы увидеть сравнение с ИИ-тренером.
           </div>
         )}
       </div>
@@ -70,7 +70,7 @@ function ReplayBoard({ board, actualMove, bestMove }: { board: Board; actualMove
               className={cn(
                 "relative grid min-h-0 place-items-center",
                 (rowIndex + colIndex) % 2 === 1 ? "bg-[#7f1d1d]" : "bg-[#f3ead7]",
-                actual && "outline outline-4 outline-amber-600 outline-offset-[-4px]",
+                actual && "outline outline-4 outline-emerald-500 outline-offset-[-4px]",
                 best && "after:absolute after:inset-1 after:rounded-sm after:border-2 after:border-dashed after:border-amber-300"
               )}
               title={squareToLabel(square)}

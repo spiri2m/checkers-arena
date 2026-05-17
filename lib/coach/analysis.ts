@@ -64,7 +64,7 @@ export function generateCoachSummary(gameState: GameState, existingReviews?: Mov
   const winner = gameState.winner ? (gameState.winner === "white" ? "белые" : "черные") : "никто";
 
   if (gameState.status !== "finished") {
-    return "После завершения партии Coach сравнит ваши ходы с engine-кандидатами и покажет риски, промахи и сильные решения.";
+    return "После завершения партии ИИ-тренер сравнит ваши ходы с кандидатами движка и покажет риски, промахи и сильные решения.";
   }
 
   return `Победитель: ${winner}. В партии было ${captures} взятий, ${promotions} превращений, ${goodMoves} сильных решений и ${blunders} серьезных просадок по оценке. Главный фокус на следующую игру: перед тихим ходом проверь цепочки взятий соперника и путь к дамке.`;
@@ -152,7 +152,7 @@ function detectMissedCapturesFromReviews(reviews: MoveReview[]): CoachInsight[] 
     .map((review) => ({
       type: "missed-capture",
       title: "Упущенное взятие",
-      description: `На ходу ${review.moveNumber} был сильнее вариант ${review.bestMove?.notation}. Сыграно ${review.move.notation}, и material swing стал хуже.`,
+      description: `На ходу ${review.moveNumber} был сильнее вариант ${review.bestMove?.notation}. Сыграно ${review.move.notation}, и материальный баланс стал хуже.`,
       moveId: review.move.id,
       moveNumber: review.moveNumber,
       notation: review.move.notation,
@@ -187,7 +187,7 @@ function detectGoodMovesFromReviews(reviews: MoveReview[]): CoachInsight[] {
     .map((review) => ({
       type: "good",
       title: review.move.promotion ? "Сильное превращение" : "Хорошее решение",
-      description: `${review.move.notation} почти совпадает с engine-кандидатом и сохраняет оценку позиции.`,
+      description: `${review.move.notation} почти совпадает с кандидатом движка и сохраняет оценку позиции.`,
       moveId: review.move.id,
       moveNumber: review.moveNumber,
       notation: review.move.notation,
@@ -203,7 +203,7 @@ function detectBestMoveAlternatives(reviews: MoveReview[]): CoachInsight[] {
     .map((review) => ({
       type: "best-move",
       title: "Лучший ход был рядом",
-      description: `На ходу ${review.moveNumber} Coach предпочел ${review.bestMove?.notation} вместо ${review.move.notation}. Разница оценки: ${round(review.loss)}.`,
+      description: `На ходу ${review.moveNumber} ИИ-тренер предпочел ${review.bestMove?.notation} вместо ${review.move.notation}. Разница оценки: ${round(review.loss)}.`,
       moveId: review.move.id,
       moveNumber: review.moveNumber,
       notation: review.move.notation,

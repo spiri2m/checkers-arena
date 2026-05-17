@@ -20,18 +20,18 @@ export function ProUpgradeCard() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Crown className="h-5 w-5 text-accent" />
-          {pro ? "Pro активен" : "Перейти на Pro"}
+          {pro ? "Про активен" : "Перейти на Про"}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {pro ? (
           <div className="flex items-center gap-2 rounded-md bg-accent/20 p-3 text-sm font-bold">
             <CheckCircle2 className="h-5 w-5 text-accent" />
-            Premium уже активирован.
+            Премиум уже активирован.
           </div>
         ) : null}
         <div className="grid gap-3 sm:grid-cols-3">
-          <Benefit icon={<Palette className="h-5 w-5" />} title="Pro-скины" text="Доски Ice и неоновые фигуры." />
+          <Benefit icon={<Palette className="h-5 w-5" />} title="Про-скины" text="Ледяные доски и неоновые фигуры." />
           <Benefit icon={<Brain className="h-5 w-5" />} title="Тренер+" text="Больше объяснений после партии." />
           <Benefit icon={<Zap className="h-5 w-5" />} title="Сильный ИИ" text="Расширенная глубина анализа." />
         </div>

@@ -155,7 +155,7 @@ async function ensureProfile(userId: string, email?: string): Promise<void> {
   await supabase.from("profiles").upsert(
     {
       id: userId,
-      username: email?.split("@")[0] ?? "Player",
+      username: email?.split("@")[0] ?? "Игрок",
       avatar: "avatar:crown",
       rating: 600,
       wins: 0,
@@ -212,7 +212,7 @@ function getRatingDelta(record: GameRecord, won: boolean, lost: boolean): number
 function mapProfile(row: Record<string, unknown>): PlayerProfile {
   return {
     id: String(row.id),
-    username: String(row.username ?? "Player"),
+    username: String(row.username ?? "Игрок"),
     avatar: row.avatar ? String(row.avatar) : undefined,
     city: row.city ? String(row.city) : undefined,
     country: row.country ? String(row.country) : undefined,

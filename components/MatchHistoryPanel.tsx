@@ -25,7 +25,7 @@ export function MatchHistoryPanel() {
         return;
       }
       setRecords(loadGuestRecords().slice(0, 5));
-      setSource("Guest LocalStorage");
+      setSource("Гостевое локальное хранилище");
     });
     return () => {
       active = false;
@@ -46,8 +46,9 @@ export function MatchHistoryPanel() {
         {records.map((record) => (
           <div key={record.id} className="rounded-md bg-muted p-3 text-sm">
             <div className="font-semibold">
-              {record.mode}
-              {record.aiDifficulty ? ` • ${record.aiDifficulty}` : ""} • {record.winner ? `победили ${record.winner === "white" ? "белые" : "черные"}` : "ничья"}
+              {modeLabel(record.mode)}
+              {record.aiDifficulty ? ` • ${difficultyLabel(record.aiDifficulty)}` : ""} •{" "}
+              {record.winner ? `победили ${record.winner === "white" ? "белые" : "черные"}` : "ничья"}
             </div>
             <div className="text-muted-foreground">{record.moves.length} ходов</div>
           </div>
@@ -58,4 +59,24 @@ export function MatchHistoryPanel() {
       </CardContent>
     </Card>
   );
+}
+
+function modeLabel(mode: GameRecord["mode"]): string {
+  const labels: Record<GameRecord["mode"], string> = {
+    local: "Локальная игра",
+    ai: "Против ИИ",
+    online: "Онлайн",
+    puzzle: "Задача",
+    sandbox: "Песочница"
+  };
+  return labels[mode] ?? mode;
+}
+
+function difficultyLabel(difficulty: NonNullable<GameRecord["aiDifficulty"]>): string {
+  const labels = {
+    easy: "легко",
+    medium: "средне",
+    hard: "сложно"
+  };
+  return labels[difficulty];
 }

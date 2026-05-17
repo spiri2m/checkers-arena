@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Bot, Brain, Crown, Dumbbell, FlaskConical, Gauge, LogOut, Swords, Trophy, User, Wifi } from "lucide-react";
+import { Bot, Brain, Crown, FlaskConical, Gauge, LogOut, Swords, Trophy, User, Wifi } from "lucide-react";
 import { AuthGate } from "@/components/auth/AuthGate";
 import { LoadingOverlay } from "@/components/ui/loading-overlay";
 import { buttonVariants } from "@/components/ui/button";
@@ -14,21 +14,21 @@ import { useGameStore } from "@/store/game-store";
 import { cn } from "@/lib/utils";
 
 const actions = [
-  { href: "/game/ai", label: "Играть против ИИ", icon: Bot, text: "Easy, Medium, Hard Engine" },
-  { href: "/sandbox", label: "Песочница", icon: FlaskConical, text: "Собери любую позицию" },
-  { href: "/room/new", label: "Играть онлайн", icon: Wifi, text: "Создать WebSocket-комнату" },
+  { href: "/game/ai", label: "Играть против ИИ", icon: Bot, text: "Легкий, средний и сложный движок" },
+  { href: "/sandbox", label: "Песочница", icon: FlaskConical, text: "Соберите любую позицию" },
+  { href: "/room/new", label: "Играть онлайн", icon: Wifi, text: "Создать комнату через веб-сокет" },
   { href: "/game/ai?quick=3", label: "Быстрая дуэль", icon: Gauge, text: "1, 3 или 5 минут" },
   { href: "/game/local", label: "Локальная игра", icon: Swords, text: "Два игрока на одном экране" },
   { href: "/learn", label: "Обучение", icon: Brain, text: "Правила и примеры" },
   { href: "/leaderboard", label: "Лидерборд", icon: Trophy, text: "Глобально, страна, город" },
   { href: "/profile", label: "Профиль", icon: User, text: "Рейтинг и достижения" },
-  { href: "/pro", label: "Перейти на Pro", icon: Crown, text: "Скины и тренер+" }
+  { href: "/pro", label: "Перейти на Про", icon: Crown, text: "Скины и тренер+" }
 ];
 
 export function HomeClient() {
   const [allowed, setAllowed] = useState(false);
   const [checking, setChecking] = useState(true);
-  const [identity, setIdentity] = useState("Guest");
+  const [identity, setIdentity] = useState("Гость");
 
   useEffect(() => {
     const guest = window.localStorage.getItem("checkers-arena:guest-mode") === "true";
@@ -36,7 +36,7 @@ export function HomeClient() {
     if (guest) {
       queueMicrotask(() => {
         if (syncStorageOwner("guest")) useGameStore.setState({ hydrated: false });
-        setIdentity("Guest");
+        setIdentity("Гость");
         setAllowed(true);
         setChecking(false);
       });
@@ -52,7 +52,7 @@ export function HomeClient() {
     void supabase.auth.getUser().then(({ data }) => {
       if (data.user) {
         if (syncStorageOwner(`user:${data.user.id}`)) useGameStore.setState({ hydrated: false });
-        setIdentity(data.user.email ?? "Player");
+        setIdentity(data.user.email ?? "Игрок");
         setAllowed(true);
       }
       setChecking(false);
@@ -113,7 +113,14 @@ export function HomeClient() {
                     <Bot className="h-4 w-4" />
                     Начать партию с ИИ
                   </Link>
-                  <Link href="/room/new" className={buttonVariants({ variant: "outline", className: "border-slate-950/20 bg-white/45 text-slate-950 hover:bg-white/70 dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:bg-white/18" })}>
+                  <Link
+                    href="/room/new"
+                    className={buttonVariants({
+                      variant: "outline",
+                      className:
+                        "border-slate-950/20 bg-white/45 text-slate-950 hover:bg-white/70 dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:bg-white/18"
+                    })}
+                  >
                     <Wifi className="h-4 w-4" />
                     Онлайн-комната
                   </Link>

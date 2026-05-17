@@ -46,7 +46,6 @@ interface GameStore {
   setDifficulty: (difficulty: Difficulty) => void;
   toggleHints: () => void;
   setTheme: (theme: "light" | "dark") => void;
-  setLanguage: (language: LocalSettings["language"]) => void;
   setBoardTheme: (theme: string) => void;
   setPieceSkin: (skin: string) => void;
   startCustomGame: (board: GameState["board"], turn: PlayerColor, mode?: Extract<GameMode, "local" | "ai">, difficulty?: Difficulty) => void;
@@ -93,7 +92,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const { game } = get();
     if (game.status !== "playing") return;
     if (game.mode === "online" && game.localPlayerColor && game.currentTurn !== game.localPlayerColor) {
-      set({ game: { ...game, message: "Сейчас ход соперника. Дождитесь синхронизации через WebSocket." } });
+      set({ game: { ...game, message: "Сейчас ход соперника. Дождитесь синхронизации через веб-сокет." } });
       return;
     }
 
@@ -192,11 +191,6 @@ export const useGameStore = create<GameStore>((set, get) => ({
   },
   setTheme: (theme) => {
     const settings = { ...get().settings, theme };
-    set({ settings });
-    saveSettings(settings);
-  },
-  setLanguage: (language) => {
-    const settings = { ...get().settings, language };
     set({ settings });
     saveSettings(settings);
   },

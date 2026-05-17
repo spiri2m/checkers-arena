@@ -17,7 +17,7 @@ export function RoomInviteCard({ roomId }: { roomId: string }) {
         ...state.game,
         roomId,
         localPlayerColor: game.localPlayerColor,
-        message: "Реванш создан. Второй игрок получит новую позицию через WebSocket."
+        message: "Реванш создан. Второй игрок получит новую позицию через веб-сокет."
       }
     }));
   }
@@ -45,7 +45,7 @@ export function RoomInviteCard({ roomId }: { roomId: string }) {
           Реванш
         </Button>
         <p className="text-sm text-muted-foreground">
-          Первый игрок играет белыми, друг по ссылке играет черными. Ходы, surrender и реванш синхронизируются через Supabase Realtime WebSocket Broadcast.
+          Первый игрок играет белыми, друг по ссылке играет черными. Ходы, сдача и реванш синхронизируются через Supabase Realtime и веб-сокеты.
         </p>
       </CardContent>
     </Card>

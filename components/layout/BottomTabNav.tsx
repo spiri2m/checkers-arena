@@ -4,17 +4,15 @@ import Link from "next/link";
 import { Bot, FlaskConical, Home, Puzzle, User } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useGameStore } from "@/store/game-store";
 
 export function BottomTabNav() {
   const pathname = usePathname();
-  const language = useGameStore((state) => state.settings.language);
   const tabs = [
-    { href: "/", label: language === "ru" ? "Главная" : "Home", icon: Home },
-    { href: "/game/ai", label: language === "ru" ? "ИИ" : "AI", icon: Bot },
-    { href: "/sandbox", label: language === "ru" ? "Песочница" : "Sandbox", icon: FlaskConical },
-    { href: "/puzzles", label: language === "ru" ? "Задачи" : "Puzzle", icon: Puzzle },
-    { href: "/profile", label: language === "ru" ? "Профиль" : "Profile", icon: User }
+    { href: "/", label: "Главная", icon: Home },
+    { href: "/game/ai", label: "ИИ", icon: Bot },
+    { href: "/sandbox", label: "Песочница", icon: FlaskConical },
+    { href: "/puzzles", label: "Задачи", icon: Puzzle },
+    { href: "/profile", label: "Профиль", icon: User }
   ];
 
   return (

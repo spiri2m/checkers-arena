@@ -3,18 +3,18 @@ import { achievementCatalog } from "@/lib/achievements/catalog";
 import { getSupabaseClient } from "@/lib/supabase/client";
 
 const fallbackPlayers: PlayerProfile[] = [
-  { id: "1", username: "Aruzhan", city: "Almaty", country: "Kazakhstan", rating: 1840, wins: 41, losses: 14, draws: 6 },
-  { id: "2", username: "Mira", city: "Astana", country: "Kazakhstan", rating: 1795, wins: 38, losses: 16, draws: 4 },
-  { id: "3", username: "NomadKing", city: "Qyzylorda", country: "Kazakhstan", rating: 1710, wins: 31, losses: 19, draws: 8 },
-  { id: "4", username: "DamaPro", city: "Tashkent", country: "Uzbekistan", rating: 1688, wins: 29, losses: 18, draws: 7 },
-  { id: "5", username: "Newcomer", city: "Qyzylorda", country: "Kazakhstan", rating: 600, wins: 0, losses: 0, draws: 0 }
+  { id: "1", username: "Аружан", city: "Алматы", country: "Казахстан", rating: 1840, wins: 41, losses: 14, draws: 6 },
+  { id: "2", username: "Мира", city: "Астана", country: "Казахстан", rating: 1795, wins: 38, losses: 16, draws: 4 },
+  { id: "3", username: "Дамочный ход", city: "Кызылорда", country: "Казахстан", rating: 1710, wins: 31, losses: 19, draws: 8 },
+  { id: "4", username: "Дамка Про", city: "Ташкент", country: "Узбекистан", rating: 1688, wins: 29, losses: 18, draws: 7 },
+  { id: "5", username: "Новичок", city: "Кызылорда", country: "Казахстан", rating: 600, wins: 0, losses: 0, draws: 0 }
 ];
 
 export const guestProfile: PlayerProfile = {
   id: "guest",
-  username: "Guest Player",
-  city: "Qyzylorda",
-  country: "Kazakhstan",
+  username: "Гость",
+  city: "Кызылорда",
+  country: "Казахстан",
   rating: 600,
   wins: 0,
   losses: 0,
@@ -35,7 +35,7 @@ export async function getCurrentProfile(): Promise<PlayerProfile> {
     const created = await upsertCurrentProfile({
       ...guestProfile,
       id: user.id,
-      username: user.email?.split("@")[0] ?? "Player",
+      username: user.email?.split("@")[0] ?? "Игрок",
       avatar: "avatar:crown"
     });
     return created;
@@ -140,7 +140,7 @@ export async function unlockSupabaseAchievements(achievements: Achievement[]): P
 function mapProfile(row: Record<string, unknown>): PlayerProfile {
   return {
     id: String(row.id),
-    username: String(row.username ?? "Player"),
+    username: String(row.username ?? "Игрок"),
     avatar: row.avatar ? String(row.avatar) : undefined,
     city: row.city ? String(row.city) : undefined,
     country: row.country ? String(row.country) : undefined,

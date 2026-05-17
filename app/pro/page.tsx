@@ -5,7 +5,7 @@ import { ProCheckoutButton } from "@/components/ProCheckoutButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const benefits = [
-  "Pro-скины доски и фигур",
+  "Про-скины доски и фигур",
   "Расширенный ИИ-тренер",
   "Сильный ИИ с глубиной анализа",
   "Больше тактических задач",
@@ -17,9 +17,9 @@ export default function ProPage() {
     <div className="space-y-5">
       <section className="rounded-lg border bg-card p-6 shadow-soft">
         <Crown className="mb-3 h-8 w-8 text-accent" />
-        <h1 className="text-4xl font-black">Перейти на Pro</h1>
+        <h1 className="text-4xl font-black">Перейти на Про</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Pro включает премиум-скины, расширенный анализ партий и будущие премиум-возможности.
+          Про включает премиум-скины, расширенный анализ партий и будущие премиум-возможности.
         </p>
         <div className="mt-5 flex flex-wrap gap-2">
           <ProCheckoutButton />

@@ -24,9 +24,9 @@ import { useGameStore } from "@/store/game-store";
 
 const tools: Array<{ id: SandboxTool; label: string; description: string; tone: string }> = [
   { id: "white-man", label: "Белая", description: "простая", tone: "bg-stone-100 text-slate-900" },
-  { id: "white-king", label: "Белая дамка", description: "king", tone: "bg-stone-100 text-slate-900" },
+  { id: "white-king", label: "Белая дамка", description: "дамка", tone: "bg-stone-100 text-slate-900" },
   { id: "black-man", label: "Черная", description: "простая", tone: "bg-slate-900 text-amber-200" },
-  { id: "black-king", label: "Черная дамка", description: "king", tone: "bg-slate-900 text-amber-200" },
+  { id: "black-king", label: "Черная дамка", description: "дамка", tone: "bg-slate-900 text-amber-200" },
   { id: "erase", label: "Ластик", description: "удалить", tone: "bg-destructive text-destructive-foreground" }
 ];
 
@@ -140,7 +140,7 @@ export function SandboxClient() {
             </div>
             <h1 className="mt-3 text-3xl font-black sm:text-5xl">Песочница позиций</h1>
             <p className="mt-3 max-w-2xl text-sm text-white/78 sm:text-base">
-              Собирайте любую доску: 10 шашек против 5 дамок, эндшпили, ловушки, тесты AI и тренировочные задачи. Потом запускайте позицию как обычную партию.
+              Собирайте любую доску: 10 шашек против 5 дамок, эндшпили, ловушки, тесты ИИ и тренировочные задачи. Потом запускайте позицию как обычную партию.
             </p>
           </div>
           <div className="grid gap-5 p-4 xl:grid-cols-[minmax(0,1fr)_260px]">
@@ -188,14 +188,14 @@ export function SandboxClient() {
                     value={difficulty}
                     onChange={(event) => setDifficulty(event.target.value as Difficulty)}
                   >
-                    <option value="easy">AI easy</option>
-                    <option value="medium">AI medium</option>
-                    <option value="hard">AI hard</option>
+                    <option value="easy">ИИ: легко</option>
+                    <option value="medium">ИИ: средне</option>
+                    <option value="hard">ИИ: сложно</option>
                   </select>
                   <div className="grid grid-cols-2 gap-2">
                     <Button onClick={() => start("ai")} disabled={!canPlay}>
                       <Bot className="h-4 w-4" />
-                      Против AI
+                      Против ИИ
                     </Button>
                     <Button variant="outline" onClick={() => start("local")} disabled={!canPlay}>
                       <Users className="h-4 w-4" />
@@ -213,7 +213,7 @@ export function SandboxClient() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Sparkles className="h-4 w-4 text-primary" />
-                Presets
+                Шаблоны
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">

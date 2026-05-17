@@ -12,8 +12,8 @@ import { cn } from "@/lib/utils";
 import { useGameStore } from "@/store/game-store";
 
 const skins = [
-  { id: "marble", name: "Marble" },
-  { id: "neon", name: "Neon Pro", pro: true }
+  { id: "marble", name: "Мрамор" },
+  { id: "neon", name: "Неон Про", pro: true }
 ];
 
 export function SettingsClient() {
@@ -47,7 +47,7 @@ export function SettingsClient() {
           <h1 className="text-3xl font-black">Настройки</h1>
         </div>
         <div className={cn("rounded-md border px-3 py-2 text-sm font-bold", pro ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground")}>
-          {pro ? "Pro активен" : "Бесплатный режим"}
+          {pro ? "Про активен" : "Бесплатный режим"}
         </div>
       </div>
       <div className="grid gap-5 lg:grid-cols-2">
@@ -73,7 +73,7 @@ export function SettingsClient() {
                   )}
                 >
                   <span className="flex items-center gap-2 font-bold">
-                    {theme.name} {theme.pro ? "Pro" : ""}
+                    {theme.name} {theme.pro ? "Про" : ""}
                     {locked ? <Lock className="h-4 w-4 text-muted-foreground" /> : null}
                   </span>
                   <span className="grid h-8 w-16 grid-cols-2 overflow-hidden rounded-md border">
@@ -85,7 +85,7 @@ export function SettingsClient() {
             })}
             {!pro ? (
               <Link href="/pro" className="rounded-md border border-accent/50 bg-accent/15 p-3 text-sm font-semibold text-accent-foreground">
-                Открыть Pro, чтобы включить Ice и будущие премиум-темы.
+                Открыть Про, чтобы включить ледяную доску и будущие премиум-темы.
               </Link>
             ) : null}
           </CardContent>

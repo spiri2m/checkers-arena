@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 
 export const metadata: Metadata = {
   title: "Checkers Arena",
-  description: "Modern checkers web app with local play, AI, online rooms, puzzles, and leaderboards."
+  description: "Современная веб-игра в шашки с ИИ, онлайн-комнатами, задачами, историей партий и лидербордом."
 };
 
 export const viewport: Viewport = {
