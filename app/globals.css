@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 42 38% 96%;
+  --foreground: 230 18% 13%;
+  --card: 42 45% 99%;
+  --card-foreground: 230 18% 13%;
+  --primary: 354 58% 34%;
+  --primary-foreground: 42 45% 96%;
+  --secondary: 38 45% 88%;
+  --secondary-foreground: 230 18% 16%;
+  --muted: 40 26% 91%;
+  --muted-foreground: 230 10% 39%;
+  --accent: 42 86% 50%;
+  --accent-foreground: 230 18% 13%;
+  --destructive: 0 78% 48%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 36 24% 80%;
+  --input: 36 24% 80%;
+  --ring: 354 58% 34%;
+}
+
+.dark {
+  --background: 230 18% 7%;
+  --foreground: 42 45% 92%;
+  --card: 230 15% 11%;
+  --card-foreground: 42 45% 92%;
+  --primary: 354 52% 52%;
+  --primary-foreground: 42 45% 96%;
+  --secondary: 229 13% 18%;
+  --secondary-foreground: 42 45% 92%;
+  --muted: 228 12% 17%;
+  --muted-foreground: 42 16% 72%;
+  --accent: 42 84% 56%;
+  --accent-foreground: 230 18% 10%;
+  --destructive: 0 72% 54%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 229 13% 24%;
+  --input: 229 13% 24%;
+  --ring: 354 52% 52%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(127, 29, 29, 0.06), transparent 24rem),
+    radial-gradient(circle at 86% 8%, rgba(217, 119, 6, 0.08), transparent 28rem),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.board-shadow {
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+}
